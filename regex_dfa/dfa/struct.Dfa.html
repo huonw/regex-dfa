@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Dfa` struct in crate `regex_dfa`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Dfa">
+
+    <title>regex_dfa::dfa::Dfa - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>regex_dfa</a>::<wbr><a href='index.html'>dfa</a></p><script>window.sidebarCurrent = {name: 'Dfa', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>regex_dfa</a>::<wbr><a href='index.html'>dfa</a>::<wbr><a class='struct' href=''>Dfa</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="#" title="collapse all docs">[&minus;]</a>
+        </span><a id='src-5800' class='srclink' href='../../src/regex_dfa/dfa.rs.html#20-23' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Dfa&lt;T, V&gt; {
+    pub states: <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../../regex_dfa/dfa/struct.State.html' title='regex_dfa::dfa::State'>State</a>&lt;T, V&gt;&gt;,
+}</pre><div class='docblock'><p>A deterministic finite automaton (DFA), over the alphabet <code>T</code>.
+Each state is annotated with a value of type <code>V</code>.
+State 0 is the starting state.</p>
+</div><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.states'><code>states</code></td><td><div class='docblock'><p>The list of states.</p>
+</div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;T, V&gt; <a class='struct' href='../../regex_dfa/dfa/struct.Dfa.html' title='regex_dfa::dfa::Dfa'>Dfa</a>&lt;T, V&gt;</code></h3><div class='impl-items'><h4 id='method.from_derivatives' class='method'><code>fn <a href='#method.from_derivatives' class='fnname'>from_derivatives</a>(initial: <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;V&gt;) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a class='struct' href='../../regex_dfa/dfa/struct.Dfa.html' title='regex_dfa::dfa::Dfa'>Dfa</a>&lt;T, V&gt;, <a class='struct' href='http://doc.rust-lang.org/nightly/collections/btree/map/struct.BTreeMap.html' title='collections::btree::map::BTreeMap'>BTreeMap</a>&lt;V, <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>&gt;)</a> <span class='where'>where T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html' title='core::cmp::Ord'>Ord</a>, V: <a class='trait' href='../../regex_dfa/derivatives/trait.Differentiable.html' title='regex_dfa::derivatives::Differentiable'>Differentiable</a>&lt;T&gt; + <a class='trait' href='../../regex_dfa/dfa/trait.Normalize.html' title='regex_dfa::dfa::Normalize'>Normalize</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html' title='core::cmp::Ord'>Ord</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a></span></code></h4>
+<div class='docblock'><p>Construct a DFA from a list of differentiable objects.
+The elements of <code>initial</code> form the first states of the DFA.
+Returns the DFA, together with a mapping from derivatives to state numbers.</p>
+</div><h4 id='method.map' class='method'><code>fn <a href='#method.map' class='fnname'>map</a>&lt;U, F&gt;(self, f: F) -&gt; <a class='struct' href='../../regex_dfa/dfa/struct.Dfa.html' title='regex_dfa::dfa::Dfa'>Dfa</a>&lt;T, U&gt; <span class='where'>where F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html' title='core::ops::FnMut'>FnMut</a>(V) -&gt; U</span></code></h4>
+<div class='docblock'><p>Apply a function to each state&#39;s value.</p>
+</div><h4 id='method.reverse' class='method'><code>fn <a href='#method.reverse' class='fnname'>reverse</a>(&amp;self) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a class='struct' href='http://doc.rust-lang.org/nightly/collections/btree/map/struct.BTreeMap.html' title='collections::btree::map::BTreeMap'>BTreeMap</a>&lt;&amp;T, <a class='struct' href='http://doc.rust-lang.org/nightly/collections/btree/set/struct.BTreeSet.html' title='collections::btree::set::BTreeSet'>BTreeSet</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;&gt;, <a class='struct' href='http://doc.rust-lang.org/nightly/collections/btree/set/struct.BTreeSet.html' title='collections::btree::set::BTreeSet'>BTreeSet</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;)</a>&gt; <span class='where'>where T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html' title='core::cmp::Ord'>Ord</a></span></code></h4>
+<div class='docblock'><p>Find the reverse transitions from each state in the DFA.</p>
+</div><h4 id='method.minimize' class='method'><code>fn <a href='#method.minimize' class='fnname'>minimize</a>(&amp;self) -&gt; <a class='struct' href='../../regex_dfa/dfa/struct.Dfa.html' title='regex_dfa::dfa::Dfa'>Dfa</a>&lt;T, &amp;V&gt; <span class='where'>where T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html' title='core::cmp::Ord'>Ord</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a>, V: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html' title='core::cmp::Ord'>Ord</a></span></code></h4>
+<div class='docblock'><p>Minimize a DFA; i.e. find a DFA with the fewest states that is
+equivalent to the given DFA.
+Two DFAs are equivalent if, given the same string, they always lead to a
+state with the same associated value.</p>
+</div></div><h3 class='impl'><code>impl&lt;T, V&gt; <a class='struct' href='../../regex_dfa/dfa/struct.Dfa.html' title='regex_dfa::dfa::Dfa'>Dfa</a>&lt;T, V&gt;</code></h3><div class='impl-items'><h4 id='method.equiv' class='method'><code>fn <a href='#method.equiv' class='fnname'>equiv</a>&lt;U&gt;(&amp;self, other: &amp;<a class='struct' href='../../regex_dfa/dfa/struct.Dfa.html' title='regex_dfa::dfa::Dfa'>Dfa</a>&lt;T, U&gt;) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a> <span class='where'>where T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html' title='core::cmp::Ord'>Ord</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a>, U: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html' title='core::cmp::Ord'>Ord</a>, V: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html' title='core::cmp::Ord'>Ord</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a>&lt;U&gt;</span></code></h4>
+<div class='docblock'><p>Compare DFAs by language equality.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html' title='core::cmp::Ord'>Ord</a>, U, V: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a>&lt;U&gt;&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a>&lt;<a class='struct' href='../../regex_dfa/dfa/struct.Dfa.html' title='regex_dfa::dfa::Dfa'>Dfa</a>&lt;T, U&gt;&gt; for <a class='struct' href='../../regex_dfa/dfa/struct.Dfa.html' title='regex_dfa::dfa::Dfa'>Dfa</a>&lt;T, V&gt;</code></h3><div class='docblock'><p>Compare DFAs by graph isomorphism.</p>
+</div><div class='impl-items'><h4 id='method.eq' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.eq' class='fnname'>eq</a>(&amp;self, other: &amp;<a class='struct' href='../../regex_dfa/dfa/struct.Dfa.html' title='regex_dfa::dfa::Dfa'>Dfa</a>&lt;T, U&gt;) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.ne' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, other: &amp;Rhs) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+</div><h3 class='impl'><code>impl&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html' title='core::cmp::Ord'>Ord</a>, V: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a> for <a class='struct' href='../../regex_dfa/dfa/struct.Dfa.html' title='regex_dfa::dfa::Dfa'>Dfa</a>&lt;T, V&gt;</code></h3><div class='impl-items'></div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a>, V: <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../../regex_dfa/dfa/struct.Dfa.html' title='regex_dfa::dfa::Dfa'>Dfa</a>&lt;T, V&gt; <span class='where'>where T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a>, V: <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a></span></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../../regex_dfa/dfa/struct.Dfa.html' title='regex_dfa::dfa::Dfa'>Dfa</a>&lt;T, V&gt;</code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><code>impl&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a>, V: <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../regex_dfa/dfa/struct.Dfa.html' title='regex_dfa::dfa::Dfa'>Dfa</a>&lt;T, V&gt; <span class='where'>where T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a>, V: <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a></span></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "regex_dfa";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>
